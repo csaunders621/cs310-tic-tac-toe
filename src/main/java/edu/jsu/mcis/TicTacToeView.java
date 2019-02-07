@@ -48,6 +48,9 @@ public class TicTacToeView extends JPanel {
         /* Refresh the GUI with updated data from the Model (via the Controller) */
 
         // INSERT YOUR CODE HERE
+        //controller.
+        //resultLabel.setName
+
 
     }
     
@@ -56,6 +59,11 @@ public class TicTacToeView extends JPanel {
         /* Disable buttons (to disallow input after game is over) */
     
         // INSERT YOUR CODE HERE
+        for (int row = 0; row < this.WIDTH; row++) {
+            for (int col = 0; col < this.WIDTH; col++) {
+                
+            }
+        }
             
     }
         

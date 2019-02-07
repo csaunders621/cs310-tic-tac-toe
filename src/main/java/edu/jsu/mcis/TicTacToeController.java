@@ -1,9 +1,13 @@
 package edu.jsu.mcis;
 
-public class TicTacToeController {
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class TicTacToeController implements ActionListener {
 
     private final TicTacToeModel model;
     private final TicTacToeView view;
+
     
     /* CONSTRUCTOR */
 
@@ -12,43 +16,8 @@ public class TicTacToeController {
         /* Initialize model, view, and width */
 
         model = new TicTacToeModel(width);
-        view = new TicTacToeView();
-        
-    }
-
-    public void start() {
-    
-        /* MAIN LOOP (repeats until game is over) */
-
-        /* Display the board using the View's "showBoard()", then use
-           "getNextMove()" to get the next move from the player.  Enter
-           the move (using the Model's "makeMark()", or display an error
-           using the View's "showInputError()" if the move is invalid. */
-
-        // INSERT YOUR CODE HERE
-        while (model.isGameover() == false) {
-
-            view.showBoard(model.toString());
-            TicTacToeMove move = view.getNextMove(model.isXTurn());
-            int row = move.getRow();
-            int col = move.getCol();
-
-            if (model.makeMark(row, col)) {
-                model.makeMark(row, col);
-            }
-            else {
-                view.showInputError();
-                view.showBoard(model.toString());
-            }
-        }
-        
-        /* After the game is over, show the final board and the winner */
-
-        view.showBoard(model.toString());
-
-        view.showResult(model.getResult().toString());
-        
-    }
+        view = new TicTacToeView(TicTacToeController(width), width);        
+    }        
 
     public String getMarkAsString(int row, int col) {        
         return (model.getMark(row, col).toString());        
@@ -61,6 +30,14 @@ public class TicTacToeController {
     @Override
     public void actionPerformed(ActionEvent event) {
         // INSERT YOUR CODE HERE
+        Object b = event.getSource();
+        String square = b.getName();
+        String[] split = square.split("");
+        
+        this.getMarkAsString(Integer.parseInt(split[5]), Integer.parseInt(split[6]));
+        this.getView().updateSquares();
+
+        }
     }
 
-}
+

@@ -263,6 +263,7 @@ public class TicTacToeModel {
         
         /* Return TRUE if the game is over */
         
+        
         return (Result.NONE != getResult());
         
     }

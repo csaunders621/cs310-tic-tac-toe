@@ -16,7 +16,7 @@ public class TicTacToeController implements ActionListener {
         /* Initialize model, view, and width */
 
         model = new TicTacToeModel(width);
-        view = new TicTacToeView(TicTacToeController(width), width);        
+        view = new TicTacToeView();        
     }        
 
     public String getMarkAsString(int row, int col) {        
@@ -34,7 +34,10 @@ public class TicTacToeController implements ActionListener {
         String square = b.getName();
         String[] split = square.split("");
         
-        this.getMarkAsString(Integer.parseInt(split[5]), Integer.parseInt(split[6]));
+        int row = Integer.parseInt(split[6]);
+        int col = Integer.parseInt(split[7]);
+        model.makeMark(row, col);
+
         this.getView().updateSquares();
 
         }
